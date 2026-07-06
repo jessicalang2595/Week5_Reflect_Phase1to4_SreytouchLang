@@ -55,6 +55,12 @@ Given the scope drift, I pivoted from "reimplement the feature" to **strengtheni
 
 I reused the suite's existing `renderWithWebSocketContext(...)` helper and its established mocking patterns so the tests read like the rest of the file. I worked through real blockers along the way: a Node version mismatch (repo needs `>=22.12.0`; default was `22.9.0`, resolved with the bundled `24.14.0` runtime), a `poetry`-dependent pre-commit hook, and a non-writable original fork.
 
+**What "done" looked like (concrete acceptance criteria I held myself to):**
+- The queue-fallback path (`sendMessage` → `PendingMessageService.queueMessage` → `{ queued: true }`) is covered by an explicit passing test.
+- The failure path (`queueMessage` throws) is covered and asserts the error reaches both the caller **and** the error-message store.
+- Tests use the file's existing helpers/mocks, so they read like the rest of the suite — no new patterns introduced.
+- The targeted run is green (`2 passed`) and I do **not** overstate the full suite's status.
+
 - 📄 [Week 3 README (Phase III)](https://github.com/jessicalang2595/Week3_PhaseIII_Issue_Selection_SreytouchLang)
 
 ### Phase IV — Pull Request & Submission (Week 4)
