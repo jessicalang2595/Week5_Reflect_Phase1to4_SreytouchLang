@@ -26,9 +26,13 @@ This README is my Week 5 progress journal. Rather than starting a new issue, I c
 
 ### Phase I — Issue Selection & Understanding (Week 1)
 
-I selected issue [#12279](https://github.com/OpenHands/OpenHands/issues/12279): V1 conversations in OpenHands did not reliably queue and deliver messages a user sends before the native WebSocket connection is fully established. I chose it because it sits at the intersection of my frontend and full-stack interests — React, TypeScript, WebSocket lifecycle, async state, and a concrete user-facing reliability problem.
+I selected issue [#12279](https://github.com/OpenHands/OpenHands/issues/12279): V1 conversations in OpenHands did not reliably queue and deliver messages a user sends before the native WebSocket connection is fully established.
 
-I completed the Phase I contributor tasks: commented on the issue from my GitHub account, updated the course issue sheet, forked the repo, and wrote up the issue analysis and a UMPIRE-based contribution plan.
+**Why I chose it (skill match, learning goal, understanding):** It sits squarely in my strongest area — React, TypeScript, and WebSocket connection-lifecycle logic — so it was a genuine skill match rather than a stretch. My learning goal was to practice debugging asynchronous connection-timing behavior on a large real codebase. And I understood *why it mattered*: if a user's message vanishes during startup, the app feels broken even when the backend later recovers, so this is a real user-trust/reliability problem, not a cosmetic one.
+
+**Problem summary (2–4 sentences):** During V1 conversation startup, a user can send a message before the native WebSocket is fully connected. That message should be queued in order and delivered automatically once the socket opens — matching the existing V0 behavior — but the V1 flow did not consistently provide that experience. The result is dropped or delayed messages during the startup/reconnect window, which erodes user trust. I chose it because the failure is concrete, user-facing, and lands directly on frontend WebSocket lifecycle code I understand.
+
+I completed the Phase I contributor tasks: [commented on the issue introducing myself](https://github.com/OpenHands/OpenHands/issues/12279#issuecomment-4618034397) from my GitHub account, updated the course issue sheet, forked the repo, and wrote up the issue analysis and a UMPIRE-based contribution plan.
 
 **Honest risk I documented up front:** the issue already had an active related PR ([#14692](https://github.com/OpenHands/OpenHands/pull/14692)), which made it a riskier selection than a fully uncontested issue. I recorded that tradeoff rather than hiding it.
 
